@@ -14,9 +14,9 @@ venv/
 .venv/
 env/
 
-# Data (large files)
-data/raw/*.json
-data/raw/*.csv
+# Data (large files - uncomment if needed)
+# data/raw/*.json
+# data/raw/*.csv
 
 # IDE
 .idea/
@@ -26,3 +26,4 @@ data/raw/*.csv
 # OS
 .DS_Store
 Thumbs.db
+._*

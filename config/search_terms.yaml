@@ -1,0 +1,54 @@
+# Search terms for western wear stores
+# Used across all collectors
+
+search_terms:
+  primary:
+    - "western wear"
+    - "cowboy boots"
+    - "cowboy hats"
+    - "western clothing"
+    - "boot barn"
+    - "tack shop"
+    - "western outfitter"
+    - "rodeo wear"
+    - "farm and ranch"
+  
+  brand_names:
+    - "Cavender's"
+    - "Boot Barn"
+    - "Sheplers"
+    - "Tecovas"
+    - "Lucchese"
+    - "Justin Boots"
+    - "Ariat"
+    - "Wrangler"
+    - "Stetson"
+
+# OSM-specific tags to search
+osm_tags:
+  shop_types:
+    - "clothes"
+    - "shoes"
+    - "outdoor"
+    - "farm"
+  name_patterns:
+    - "western"
+    - "cowboy"
+    - "boot"
+    - "ranch"
+    - "tack"
+    - "rodeo"
+    - "saddlery"
+
+# Pilot region: South Carolina
+pilot_region:
+  state: "SC"
+  counties:
+    - "Richland"
+    - "Lexington"
+  bounding_box:
+    # Approximate bbox for Richland/Lexington area
+    south: 33.7
+    west: -81.4
+    north: 34.3
+    east: -80.7

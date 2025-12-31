@@ -1,0 +1,144 @@
+{
+    "pilot_region": "South Carolina - Richland & Lexington Counties",
+    "collection_date": "2024-12-31",
+    "data_source": "Google Maps (browser search)",
+    "stores": [
+        {
+            "name": "La Herradura Western Wear SC",
+            "address": "7380 Two Notch Rd, Columbia, SC",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 4.7,
+            "google_review_count": 84,
+            "store_type": "western_apparel",
+            "notes": "Known for boots and friendly staff"
+        },
+        {
+            "name": "Pistol Creek West Boot Store",
+            "address": "4350 St Andrews Rd, Columbia, SC",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 4.4,
+            "google_review_count": 322,
+            "store_type": "boot_store",
+            "notes": "Large inventory of hats, boots, and clothing"
+        },
+        {
+            "name": "Carolina Boots Western Wear",
+            "address": "534 Knox Abbott Dr, Cayce, SC",
+            "city": "Cayce",
+            "state": "SC",
+            "google_rating": 4.9,
+            "google_review_count": 9,
+            "store_type": "boot_store",
+            "notes": "Great selection of western boots"
+        },
+        {
+            "name": "Stone Boot Company",
+            "address": "807 Meeting St, West Columbia, SC",
+            "city": "West Columbia",
+            "state": "SC",
+            "google_rating": 4.7,
+            "google_review_count": 74,
+            "store_type": "boot_store",
+            "notes": "Good prices and high-quality products"
+        },
+        {
+            "name": "Campos Boots & More",
+            "address": "3500 Augusta Rd Booth 100, West Columbia, SC",
+            "city": "West Columbia",
+            "state": "SC",
+            "google_rating": 3.7,
+            "google_review_count": 3,
+            "store_type": "western_apparel",
+            "notes": "Located in Barnyard Flea Market"
+        },
+        {
+            "name": "Harrison's - Columbia, SC",
+            "address": "9810 Two Notch Rd Suite E, Columbia, SC",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 5.0,
+            "google_review_count": 3,
+            "store_type": "workwear",
+            "notes": "Quality gear and workwear"
+        },
+        {
+            "name": "Major League Fashion",
+            "address": "1820 Platt Springs Rd, West Columbia, SC",
+            "city": "West Columbia",
+            "state": "SC",
+            "google_rating": 5.0,
+            "google_review_count": 3,
+            "store_type": "clothing",
+            "notes": "Western fashion options"
+        },
+        {
+            "name": "Horse Sense Tack & Feed",
+            "address": "1407 S Lake Dr, Lexington, SC",
+            "city": "Lexington",
+            "state": "SC",
+            "google_rating": 4.6,
+            "google_review_count": 276,
+            "store_type": "tack_shop",
+            "notes": "Western gear, boots, and horse supplies"
+        },
+        {
+            "name": "CB Forrest Workwear",
+            "address": "988 Knox Abbott Dr, Cayce, SC",
+            "city": "Cayce",
+            "state": "SC",
+            "google_rating": 4.3,
+            "google_review_count": 226,
+            "store_type": "workwear",
+            "notes": "Western-style boots selection"
+        },
+        {
+            "name": "Clothing World Outdoor Outfitters",
+            "address": "4681 Percival Rd, Columbia, SC 29229",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 4.5,
+            "google_review_count": 343,
+            "store_type": "outdoor_outfitter",
+            "notes": "Noted for carrying cowboy hats"
+        },
+        {
+            "name": "Marbella's",
+            "address": "7546 Garners Ferry Rd #300C, Columbia, SC 29209",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 5.0,
+            "google_review_count": 4,
+            "store_type": "hat_specialty",
+            "notes": "Specializes in high-quality hats"
+        },
+        {
+            "name": "A Plus Hats & More",
+            "address": "421 Bush River Rd, Columbia, SC 29210",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 2.9,
+            "google_review_count": 12,
+            "store_type": "hat_specialty",
+            "notes": "Hat specialty store"
+        },
+        {
+            "name": "Miss Cocky",
+            "address": "1450 Main St, Columbia, SC 29201",
+            "city": "Columbia",
+            "state": "SC",
+            "google_rating": 4.4,
+            "google_review_count": 51,
+            "store_type": "boutique",
+            "notes": "USC boutique with western-style hats"
+        }
+    ],
+    "closed_stores": [
+        {
+            "name": "Los Patrones Western Wear & Mas",
+            "address": "1053 Sunset Blvd",
+            "status": "permanently_closed"
+        }
+    ]
+}
