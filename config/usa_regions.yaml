@@ -1,0 +1,62 @@
+# USA Regions Configuration
+# Priority ordering and boundaries for collection
+
+# States to collect first (highest western wear density)
+priority_states:
+  - TX   # Largest western wear market
+  - OK   # Strong rodeo culture
+  - MT   # Ranch country
+  - WY   # Cowboy state
+  - AZ   # Southwest
+  - NM   # Southwest
+  - CO   # Mountain west
+  - NV   # Western lifestyle
+  - CA   # Large population, diverse markets
+
+# Secondary tier (collect after priority)
+secondary_states:
+  - KS   # Plains states
+  - NE
+  - SD
+  - ND
+  - UT
+  - ID
+
+# Note: All other states collected in geographic order
+# after priority and secondary tiers
+
+# Major metros to ensure coverage
+# (in case grid misses dense urban areas)
+major_metros:
+  - name: Houston
+    lat: 29.76
+    lon: -95.37
+    state: TX
+  - name: Dallas-Fort Worth
+    lat: 32.78
+    lon: -96.80
+    state: TX
+  - name: San Antonio
+    lat: 29.42
+    lon: -98.49
+    state: TX
+  - name: Austin
+    lat: 30.27
+    lon: -97.74
+    state: TX
+  - name: Oklahoma City
+    lat: 35.47
+    lon: -97.52
+    state: OK
+  - name: Phoenix
+    lat: 33.45
+    lon: -112.07
+    state: AZ
+  - name: Denver
+    lat: 39.74
+    lon: -104.99
+    state: CO
+  - name: Las Vegas
+    lat: 36.17
+    lon: -115.14
+    state: NV
