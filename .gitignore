@@ -1,0 +1,28 @@
+# Gitignore for WesternWearMapping
+
+# API Keys
+config/api_keys.env
+*.env
+!*.env.template
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.Python
+venv/
+.venv/
+env/
+
+# Data (large files)
+data/raw/*.json
+data/raw/*.csv
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
