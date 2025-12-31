@@ -73,9 +73,9 @@ class NationwideCollector:
         spacing_km: float = 70.0,
         search_radius_m: int = 50000,
         queries: Optional[list[str]] = None,
-        use_google: bool = True,
-        use_yelp: bool = False,
-        use_osm: bool = True,
+        use_google: bool = False,  # Paid API - disabled by default
+        use_yelp: bool = False,    # Paid API - disabled by default
+        use_osm: bool = True,      # FREE - enabled by default
         delay_seconds: float = 0.5,
     ):
         self.output_dir = Path(output_dir)
@@ -128,9 +128,29 @@ class NationwideCollector:
         new_count = 0
         location = (point.lat, point.lon)
         
-        for query in self.queries:
-            # Google Places
-            if self.use_google:
+        # OSM Overpass - FREE, one query covers all patterns
+        if self.use_osm:
+            try:
+                # Create bounding box around point
+                delta = self.search_radius_m / 111000  # rough conversion to degrees
+                bbox = (
+                    point.lat - delta,
+                    point.lon - delta,
+                    point.lat + delta,
+                    point.lon + delta
+                )
+                stores = osm_overpass.search_area(bbox=bbox)
+                for store_data in stores:
+                    if store_data:
+                        _, is_new = self.dedup.add(store_data, source="osm")
+                        if is_new:
+                            new_count += 1
+            except Exception as e:
+                self._log(f"  OSM error at {point.lat},{point.lon}: {e}")
+        
+        # Google Places - PAID, query per search term
+        if self.use_google:
+            for query in self.queries:
                 try:
                     places = google_places.search_places(
                         query=query,
@@ -145,36 +165,16 @@ class NationwideCollector:
                     time.sleep(self.delay_seconds)
                 except Exception as e:
                     self._log(f"  Google error at {point.lat},{point.lon}: {e}")
-            
-            # OSM Overpass (free, no rate limit concerns)
-            if self.use_osm:
-                try:
-                    # Create bounding box around point
-                    delta = self.search_radius_m / 111000  # rough conversion to degrees
-                    bbox = (
-                        point.lat - delta,
-                        point.lon - delta,
-                        point.lat + delta,
-                        point.lon + delta
-                    )
-                    pois = osm_overpass.search_area(bbox=bbox, query=query)
-                    for poi in pois:
-                        store_data = osm_overpass.parse_element(poi)
-                        if store_data:
-                            _, is_new = self.dedup.add(store_data, source="osm")
-                            if is_new:
-                                new_count += 1
-                except Exception as e:
-                    self._log(f"  OSM error at {point.lat},{point.lon}: {e}")
-            
-            # Yelp (if enabled and configured)
-            if self.use_yelp:
+        
+        # Yelp - PAID, requires API key
+        if self.use_yelp:
+            for query in self.queries:
                 try:
                     businesses = yelp.search_businesses(
                         term=query,
                         latitude=point.lat,
                         longitude=point.lon,
-                        radius=min(self.search_radius_m, 40000)  # Yelp max is 40km
+                        radius=min(self.search_radius_m, 40000)
                     )
                     for biz in businesses:
                         store_data = yelp.parse_business(biz)
@@ -343,9 +343,9 @@ def run_collection(
     
     collector = NationwideCollector(
         output_dir=output_dir,
-        use_google=True,
-        use_yelp=False,  # Requires API key
-        use_osm=True,
+        use_google=False,  # Paid API
+        use_yelp=False,    # Paid API
+        use_osm=True,      # FREE
     )
     
     return collector.run(

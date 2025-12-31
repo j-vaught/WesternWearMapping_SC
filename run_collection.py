@@ -2,12 +2,15 @@
 """
 Western Wear Store Collection CLI
 
+Uses FREE OpenStreetMap data by default. No API key required!
+
 Usage:
-    python run_collection.py --state SC           # Single state
-    python run_collection.py --priority           # Priority western states
-    python run_collection.py --full               # Full USA
+    python run_collection.py --state SC           # Single state (FREE)
+    python run_collection.py --priority           # Priority western states (FREE)
+    python run_collection.py --full               # Full USA (FREE)
     python run_collection.py --resume             # Resume interrupted run
     python run_collection.py --dry-run --state TX # Show coverage only
+    python run_collection.py --state TX --use-google  # Add paid Google data
 """
 
 import argparse
@@ -85,19 +88,19 @@ Examples:
         help="Output directory (default: data/collected)"
     )
     parser.add_argument(
-        "--no-google",
+        "--use-google",
         action="store_true",
-        help="Disable Google Places API"
+        help="Enable Google Places API (PAID - requires API key)"
     )
     parser.add_argument(
         "--use-yelp",
         action="store_true",
-        help="Enable Yelp API (requires API key)"
+        help="Enable Yelp API (PAID - requires API key)"
     )
     parser.add_argument(
         "--no-osm",
         action="store_true",
-        help="Disable OSM Overpass"
+        help="Disable OSM Overpass (FREE, enabled by default)"
     )
     
     args = parser.parse_args()
@@ -144,13 +147,10 @@ Examples:
         for s, count in sorted(stats['by_state'].items(), key=lambda x: -x[1])[:15]:
             print(f"    {s}: {count} points")
         
-        # Cost estimate
-        queries = 7  # default number of queries
-        api_calls = stats['total_points'] * queries
-        cost = api_calls * 0.032  # Google Places pricing
-        
-        print(f"\n  Estimated API calls: {api_calls:,}")
-        print(f"  Estimated Google cost: ${cost:.2f}")
+        # Cost estimate (only if using Google)
+        print(f"\n  Data source: OSM Overpass (FREE)")
+        if not args.no_osm:
+            print(f"  OSM queries: {stats['total_points']} (one per grid point)")
         
         return
     
@@ -158,9 +158,9 @@ Examples:
     collector = NationwideCollector(
         output_dir=output_dir,
         spacing_km=args.spacing,
-        use_google=not args.no_google,
-        use_yelp=args.use_yelp,
-        use_osm=not args.no_osm,
+        use_google=args.use_google,  # Opt-in (paid)
+        use_yelp=args.use_yelp,      # Opt-in (paid)
+        use_osm=not args.no_osm,     # Default ON (free)
     )
     
     try:

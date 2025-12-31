@@ -54,6 +54,41 @@ out center;
     return query
 
 
+def search_area(
+    bbox: tuple[float, float, float, float],
+    query: str = None
+) -> list[dict]:
+    """
+    Search an area for western wear stores.
+    
+    Args:
+        bbox: (south, west, north, east) bounding box
+        query: Ignored (uses built-in western wear patterns)
+    
+    Returns:
+        List of parsed store dicts
+    """
+    name_patterns = [
+        "western", "cowboy", "boot", "ranch", "tack", 
+        "rodeo", "saddlery", "wrangler", "ariat", "cavender",
+        "boot barn", "sheplers"
+    ]
+    
+    overpass_query = build_query(bbox, name_patterns)
+    result = query_overpass(overpass_query)
+    
+    if not result:
+        return []
+    
+    elements = result.get("elements", [])
+    return [parse_osm_element(e) for e in elements]
+
+
+def parse_element(element: dict) -> dict:
+    """Alias for parse_osm_element for compatibility."""
+    return parse_osm_element(element)
+
+
 def query_overpass(query: str, max_retries: int = 3) -> Optional[dict]:
     """
     Execute Overpass API query with retry logic.
